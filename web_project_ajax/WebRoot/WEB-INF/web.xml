@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>web_project_ajax</display-name>
+  <servlet>
+    <servlet-name>ProvinceServlet</servlet-name>
+    <servlet-class>allen.ajax.servlet.ProvinceServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CityServlet</servlet-name>
+    <servlet-class>allen.ajax.servlet.CityServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CountyServlet</servlet-name>
+    <servlet-class>allen.ajax.servlet.CountyServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckUserServlet</servlet-name>
+    <servlet-class>allen.ajax.servlet2.CheckUserServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>ProvinceServlet</servlet-name>
+    <url-pattern>/province.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CityServlet</servlet-name>
+    <url-pattern>/city.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CountyServlet</servlet-name>
+    <url-pattern>/county.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckUserServlet</servlet-name>
+    <url-pattern>/checkUser.action</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

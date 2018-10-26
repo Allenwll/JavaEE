@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>register.html</title>
+    <meta  charset="UTF-8">
+    
+
+  </head>
+  
+  <body>
+    <h1>注册页面</h1>
+    <form action="register.action" method="post">
+         <table>
+            <tr>
+                <th>用户名：</th>
+                 <td>
+                  <input type="text" name="uname"/> 
+                 </td>
+            </tr>
+             <tr>
+                <th>密码：</th>
+                 <td>
+                    <input type="password" name="pwd"/> 
+                 </td>
+            </tr>
+             <tr>
+                <th>性别</th>
+                 <td>
+                    <input type="radio" name="gender" value="1"/>男
+                     <input type="radio" name="gender" value="2"/>女
+                 </td>
+            </tr>
+             <tr>
+                <th>爱好</th>
+                 <td>
+                   <input type="checkbox" name="fav" value="1">爱好1
+                   <input type="checkbox" name="fav" value="2">爱好2
+                   <input type="checkbox" name="fav" value="3">爱好3
+                   <input type="checkbox" name="fav" value="4">爱好4
+                 </td>
+            </tr>
+             <tr>
+                <th>学校</th>
+                 <td>
+                 <select name="school">
+                     <option value="-1">-请选择-</option>
+                    <option value="a">蓝翔学院</option>
+                    <option value="b">帅哥学院</option>
+                    <option value="c">辣女学院</option>
+                    <option value="d">露露学院</option>
+                 </select>
+                 </td>
+            </tr>
+             <tr>
+                <th>个人介绍</th>
+                 <td>
+                  <textarea  name="intro" rows="5" cols="50"></textarea>
+                 </td>
+            </tr>
+             <tr>
+                <th colspan="2"><input  type="submit" value="注册"/></th>
+            </tr>
+         </table>
+    </form>
+  </body>
+</html>

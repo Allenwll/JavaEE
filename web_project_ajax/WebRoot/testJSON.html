@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>testJSON.html</title>
+    <meta charset="UTF-8">
+    
+    <script type="text/javascript">
+       var JSONObject={
+    		   "name":"momo",
+    		    "age":"28",
+    		    "school":{"addr":"BeiJing","sname":"sxt"},
+    		    "teaching":function(){
+    		    	alert("javaEE");
+    		    }
+       }
+       //alert(JSONObject.name);
+       //alert(JSONObject.school.sname);
+       //alert(JSONObject.teaching);//行不通
+        // JSONObject.teaching();//正确调用
+       
+       //将服务器返回来的字符串数据转为json格式
+       var ss="alert(99)";
+       var str="{'sxt':'BeiJing'}";
+       //alert(str.sxt);
+       //使用eval函数，可以将字符串当作js代码来执行
+      // alert(ss);
+       //eval(ss);
+       //var JsonOBJ=eval(str);
+       var JOBJ=eval("("+str+")");//独有的json字符串转换为js代码的方式
+       alert(JOBJ.sxt);
+    </script>
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+  </body>
+</html>

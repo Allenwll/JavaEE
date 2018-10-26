@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>main.html</title>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	window.onload = function() {
+		var nodes = document.getElementsByTagName("a");
+		for (var i = 0; i < nodes.length; i++) {
+			nodes[i].onclick = function() {
+				//1.创建XMLHttpRequest对象
+				var xhr = null;
+				if (window.XMLHttpRequest) {
+					xhr = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				//2.创建一个连接
+				var url = this.href + "?time=" + new Date();
+
+				xhr.open("GET", url);
+
+				//3.发送请求
+				xhr.send(null);//xhr.send(null);为了防止火狐出错
+				//xhr.send("goal=test&uname=momo");//xhr.send(null);为了防止火狐出错
+				//4.监听请求过程，每次请求状态值的改变都会触发这个事件，是由服务器触发的。
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4) {//与服务器交互完成
+						//http协议状态码
+						if (xhr.status == 200 || xhr.status == 304) {//ok
+							var result = xhr.responseText;//服务器的响应内容
+							var json = eval("(" + result + ")");
+							console.info(json);
+							//alert(json.person.name);
+
+							//JSON的格式能直接使用，可以将其当作dom对象，进行解析，但是解析困难
+							//解析完毕
+							var name = json.person.name;
+							var website = json.person.website;
+							var email = json.person.email;
+
+							//需求显示格式
+							/*
+							  <h2>
+							     <a href="网址">名字</a>
+							  </h2>
+							   <a href="网址">邮箱</a>
+							 */
+							//alert(name+website+email);
+							var aNode = document.createElement("a");
+							aNode.href = website;
+							var text = document.createTextNode(name);
+							aNode.appendChild(text);
+
+							var h2Node = document.createElement("h2");
+							h2Node.appendChild(aNode);
+
+							var aNode2 = document.createElement("a");
+							aNode2.href = website;
+							var text2 = document.createTextNode(email);
+							aNode2.appendChild(text2);
+							//进行需求操作
+							var main = document.getElementById("main");
+							main.innerHTML = "";//清空之前的内容
+							main.appendChild(h2Node);
+							main.appendChild(aNode2);
+
+						}
+					}
+				}
+				return false;//防止a标签的默认提交事件
+			}
+		}
+	}
+</script>
+
+</head>
+
+<body>
+	<h2>JSON的数据交互格式</h2>
+	<ol>
+		<li><a href="file/andy.json">Andy json</a></li>
+		<li><a href="file/kitty.json">kitty json</a></li>
+		<li><a href="file/tony.json">tony json</a></li>
+	</ol>
+	<div id="main" style="width:300px;height:200px;border:1px solid red">
+		NULL</div>
+</body>
+</html>

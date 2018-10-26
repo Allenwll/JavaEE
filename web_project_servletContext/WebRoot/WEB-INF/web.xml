@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>web_project_servletContext</display-name>
+	<context-param>
+		<description>全局配置</description>
+		<param-name>boss</param-name>
+		<param-value>Mark</param-value>
+	</context-param>
+
+	<context-param>
+		<description>全局配置</description>
+		<param-name>wife</param-name>
+		<param-value>李感恩</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>LearnServletContext</servlet-name>
+		<servlet-class>web_project_servletContext.LearnServletContext</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LearnServletContext</servlet-name>
+		<url-pattern>/context</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>web_project_jump</display-name>
+	<servlet>
+		<servlet-name>LearnDispatcher</servlet-name>
+		<servlet-class>allen.servlet.dispatcher.LearnDispatcher</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LearnDispatcher1</servlet-name>
+		<servlet-class>allen.servlet.dispatcher.LearnDispatcher1</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LearnDispatcher2</servlet-name>
+		<servlet-class>allen.servlet.dispatcher.LearnDispatcher2</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LearnRedirectServlet</servlet-name>
+		<servlet-class>allen.servlet.redirect.LearnRedirectServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LearnRedirectServlet2</servlet-name>
+		<servlet-class>allen.servlet.redirect.LearnRedirectServlet2</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>LearnDispatcher</servlet-name>
+		<url-pattern>/dispatcher.action</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LearnDispatcher1</servlet-name>
+		<url-pattern>/dispatcher1.action</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LearnDispatcher2</servlet-name>
+		<url-pattern>/dispatcher2.action</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LearnRedirectServlet</servlet-name>
+		<url-pattern>/redirect.action</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LearnRedirectServlet2</servlet-name>
+		<url-pattern>/redirect2.action</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

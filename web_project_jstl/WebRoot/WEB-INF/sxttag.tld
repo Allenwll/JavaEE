@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+
+	<description>BJSXT JSTL 1.1 core library</description>
+	<display-name>BJSXT core</display-name>
+	<tlib-version>1.1</tlib-version>
+	<short-name>st</short-name>
+	<uri>http://www.bjsxt.com/jsp/sttaglib</uri>
+
+
+	<tag>
+		<description>
+       根据用户的使用权限，显示或隐藏操作功能按钮
+    </description>
+		<name>check</name>
+		<tag-class>com.bjsxt.jstl.functions.CheckTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description>
+			最低权限值
+        </description>
+			<name>lowPower</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+		</attribute>
+	</tag>
+</taglib>

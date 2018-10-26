@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>三级联动</title>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	//方法定义
+	function sendAjax(url, success) {
+
+		//1.创建XMLHttpRequest对象
+		var xhr = null;
+		if (window.XMLHttpRequest) {
+			xhr = new XMLHttpRequest();
+		} else if (window.ActiveXObject) {
+			xhr = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		//2.创建一个连接
+		xhr.open("GET", url);
+
+		//3.发送请求
+		xhr.send(null);
+
+		//4.监听请求过程，每次请求状态值的改变都会触发这个事件，是由服务器触发的。
+		xhr.onreadystatechange = function() {
+
+			if (xhr.readyState == 4) {//与服务器交互完成
+				//http协议状态码
+				if (xhr.status == 200 || xhr.status == 304) {//ok
+					var result = xhr.responseText;//服务器的响应内容
+					//alert(result);
+					//进行需求操作
+					success(result);
+				}
+			}
+		};
+
+		return false;//防止a标签的默认提交事件
+	};
+</script>
+
+<script type="text/javascript">
+	window.onload = function() {
+		//初始化省份
+		sendAjax("/ajax/province.action", function(result) {
+
+			//返回的数据是一个长得像JSON格式的字符串，需要将其转换为JSON对象
+			var json = JSON.parse(result);//IE不支持
+
+			console.info(json);
+
+			//在页面进行展示
+			var pSelect = document.getElementById("province");
+
+			for (var i = 0; i < json.length; i++) {
+				var p = json[i];
+
+				//下拉框默认的添加新选项的方法
+				pSelect.options.add(new Option(p.name, p.code));
+			}
+
+		});
+
+		//绑定省份选项改变事件
+		document.getElementById("province").onchange = function() {
+
+			//先获取当前省份的值
+			var pCode = document.getElementById("province").value;
+
+			//发送请求
+			sendAjax("/ajax/city.action?pCode=" + pCode, function(result) {
+
+				//返回的数据是一个长得像JSON格式的字符串，需要将其转换为JSON对象
+				var json = JSON.parse(result);//IE不支持
+
+				console.info(json);
+
+				//在页面进行展示
+				var cSelect = document.getElementById("city");
+				document.getElementById("city").length = 1;
+				for (var i = 0; i < json.length; i++) {
+					var c = json[i];
+
+					//下拉框默认的添加新选项的方法
+					cSelect.options.add(new Option(c.name, c.code));
+				}
+				//选择省份改变的时候,清空区县信息
+				document.getElementById("county").length=1;
+			});
+		};
+		//绑定城市选项改变事件
+		document.getElementById("city").onchange = function() {
+
+			//先获取当前城市的值
+			var cCode = document.getElementById("city").value;
+
+			//发送请求
+			sendAjax("/ajax/county.action?cCode=" + cCode, function(result) {
+
+				//返回的数据是一个长得像JSON格式的字符串，需要将其转换为JSON对象
+				var json = JSON.parse(result);//IE不支持
+
+				console.info(json);
+
+				//在页面进行展示
+				var cySelect = document.getElementById("county");
+				//城市改变时，清空区县的信息
+				document.getElementById("county").length = 1;
+				for (var i = 0; i < json.length; i++) {
+					var cy = json[i];
+
+					//下拉框默认的添加新选项的方法
+					cySelect.options.add(new Option(cy.name, cy.code));
+				}
+
+			});
+		};
+
+	};
+</script>
+
+</head>
+
+<body>
+	<h1>三级联动</h1>
+	<select id="province">
+		<option value="-1">---请选择省份---</option>
+	</select>
+	<select id="city">
+		<option value="-1">---请选择城市---</option>
+	</select>
+	<select id="county">
+		<option value="-1">---请选择县---</option>
+	</select>
+</body>
+</html>

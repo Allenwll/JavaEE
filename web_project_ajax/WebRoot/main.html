@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>main.html</title>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	window.onload = function() {
+		var nodes = document.getElementsByTagName("a");
+		for (var i = 0; i < nodes.length; i++) {
+			nodes[i].onclick = function() {
+				//1.创建XMLHttpRequest对象
+				var xhr = null;
+				if (window.XMLHttpRequest) {
+					xhr = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				//2.创建一个连接
+				var url = this.href + "?time=" + new Date();
+
+				xhr.open("GET", url);
+
+				//3.发送请求
+				xhr.send(null);//xhr.send(null);为了防止火狐出错
+				//xhr.send("goal=test&uname=momo");//xhr.send(null);为了防止火狐出错
+				//4.监听请求过程，每次请求状态值的改变都会触发这个事件，是由服务器触发的。
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4) {//与服务器交互完成
+						//http协议状态码
+						if (xhr.status == 200 || xhr.status == 304) {//ok
+							var result = xhr.responseText;//服务器的响应内容
+							//html放回的数据格式可直接使用
+							// alert(result);
+							//进行需求操作
+							document.getElementById("main").innerHTML = result;
+						}
+					}
+				}
+				return false;//防止a标签的默认提交事件
+			}
+		}
+	}
+</script>
+
+</head>
+
+<body>
+	<h2>HTML的数据交互格式</h2>
+	<ol>
+		<li><a href="file/andy.html">Andy html</a></li>
+		<li><a href="file/kitty.html">kitty html</a></li>
+		<li><a href="file/tony.html">tony html</a></li>
+	</ol>
+	<div id="main" style="width:300px;height:200px;border:1px solid red">
+		NULL
+	</div>
+</body>
+</html>

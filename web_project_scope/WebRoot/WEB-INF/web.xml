@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>web_project_scope</display-name>
+  <servlet>
+    <servlet-name>RequestScopeServlet</servlet-name>
+    <servlet-class>allen.servlet.scope.request.RequestScopeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TestScopeServlet</servlet-name>
+    <servlet-class>allen.servlet.scope.test.TestScopeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SessionScopeServlet</servlet-name>
+    <servlet-class>allen.servlet.scope.session.SessionScopeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ApplicationScopeServlet</servlet-name>
+    <servlet-class>allen.servlet.scope.application.ApplicationScopeServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>RequestScopeServlet</servlet-name>
+    <url-pattern>/request.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestScopeServlet</servlet-name>
+    <url-pattern>/testScope.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SessionScopeServlet</servlet-name>
+    <url-pattern>/session.action</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ApplicationScopeServlet</servlet-name>
+    <url-pattern>/application.action</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
